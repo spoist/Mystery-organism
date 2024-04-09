@@ -39,13 +39,22 @@ let pAequorFactory = (number, strand) => {
         }
       const commonDna = counter / 15 * 100;
       console.log(`specimen #${this.specimenNum} and specimen #${pAequor.specimenNum} have ${commonDna}% DNA in common`);
+    },
+    willLikelySurvive() {
+      let counter = 0;
+      for (pair of this.dna) {
+        if ((pair === 'G') || (pair === 'C')) {
+          counter++;
+        }
+      }
+      return (counter/15*100 >= 60);
     }
   };
 };
 
 let pAequor1 = pAequorFactory(1, mockUpStrand());
 let pAequor2 = pAequorFactory(2, mockUpStrand());
-pAequor2.compareDNA(pAequor1);
+console.log(pAequor2.willLikelySurvive());
 
 
 
