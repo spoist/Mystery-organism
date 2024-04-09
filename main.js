@@ -30,12 +30,22 @@ let pAequorFactory = (number, strand) => {
       this.dna[elementToMutate] = newBase;      
       return this.dna;
     },
+    compareDNA(pAequor) {
+      let counter = 0;
+      for (let i=0; i<15; i++) {
+          if (this.dna[i] === pAequor.dna[i]) {
+            counter++
+          };
+        }
+      const commonDna = counter / 15 * 100;
+      console.log(`specimen #${this.specimenNum} and specimen #${pAequor.specimenNum} have ${commonDna}% DNA in common`);
+    }
   };
 };
 
-let pAequor = pAequorFactory(1, mockUpStrand());
-console.log(pAequor);
-console.log(pAequor.mutate());
+let pAequor1 = pAequorFactory(1, mockUpStrand());
+let pAequor2 = pAequorFactory(2, mockUpStrand());
+pAequor2.compareDNA(pAequor1);
 
 
 
