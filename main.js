@@ -18,10 +18,24 @@ let pAequorFactory = (number, strand) => {
   return {
     specimenNum: number,
     dna: strand,
+    mutate() {
+      const randomDna = Math.floor(Math.random() * 15);
+      let newBase;
+      // Find the index of the element to modify based on the reference value
+      let elementToMutate = this.dna.indexOf(strand[randomDna]);
+      do {
+        newBase = returnRandBase();
+      } while(elementToMutate === newBase);
+      // Modify the element at the found index
+      this.dna[elementToMutate] = newBase;      
+      return this.dna;
+    },
   };
 };
 
-console.log(pAequorFactory(1, mockUpStrand()));
+let pAequor = pAequorFactory(1, mockUpStrand());
+console.log(pAequor);
+console.log(pAequor.mutate());
 
 
 
