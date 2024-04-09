@@ -48,13 +48,30 @@ let pAequorFactory = (number, strand) => {
         }
       }
       return (counter/15*100 >= 60);
-    }
+    },
   };
 };
 
-let pAequor1 = pAequorFactory(1, mockUpStrand());
-let pAequor2 = pAequorFactory(2, mockUpStrand());
-console.log(pAequor2.willLikelySurvive());
+let instances = [];
+let instanceCreator = count => {
+  let counter = 0;
+  let temp;
+  do {
+    temp = pAequorFactory(counter, mockUpStrand());
+    if (temp.willLikelySurvive()) {
+      instances.push(pAequorFactory(counter, mockUpStrand()));
+      counter++;
+    };
+  } while (count != counter);
+  
+  // for (let i=1; i <= count; i++) {
+  //   instances.push(pAequorFactory(i, mockUpStrand()));
+  // };
+}
+
+instanceCreator(5);
+console.log(instances);
+
 
 
 
