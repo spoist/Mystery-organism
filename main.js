@@ -63,10 +63,6 @@ let instanceCreator = count => {
       counter++;
     };
   } while (count != counter);
-  
-  // for (let i=1; i <= count; i++) {
-  //   instances.push(pAequorFactory(i, mockUpStrand()));
-  // };
 }
 
 instanceCreator(5);
